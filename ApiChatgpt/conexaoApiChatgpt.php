@@ -1,7 +1,7 @@
 <?php
 
 class ConexaoApi{
-    private $apiKey = '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';
+    private $apiKey = 'sua secret key da api openAi';
     private $url = 'https://api.openai.com/v1/engines/';
     private $resposta;
 
@@ -38,14 +38,11 @@ class ConexaoApi{
             if($statusCode == 200){
                 $resultado = json_decode($resposta, true);     
                 $texto = $resultado['choices'][0]['text'];
-                // var_dump($texto);
                 $this->resposta = $texto;
             }else{
                 $resultado = json_decode($resposta, true); 
                 $error = $resultado['error'];
                 $messagem = $error['message'];
-                // var_dump($curl);
-                // var_dump("epa");
                 $this->resposta = $messagem;
             }
             
